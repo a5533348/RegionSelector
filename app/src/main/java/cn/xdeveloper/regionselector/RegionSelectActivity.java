@@ -113,4 +113,23 @@ public class RegionSelectActivity extends AppCompatActivity implements BaseQuick
         setResult(RESULT_CODE_SUCCESS, data);
         finish();
     }
+
+    @Override
+    public void onBackPressed() {
+        if (state == 0) {
+            super.onBackPressed();
+        }
+
+        if (state == 1) {
+            setTitle("选择省份");
+            mList.clear();
+            mAdapter.addData(mProvinceList);
+            state--;
+        } else if (state == 2) {
+            setTitle("选择城市");
+            mList.clear();
+            mAdapter.addData(mCityList);
+            state--;
+        }
+    }
 }
